@@ -167,12 +167,57 @@ section#login form{
 		font-size: 1.5em;
 		color: white;
 	}
-		section#login form button[type="submit"]:focus {
-			border: 5px green;
+		section#login form button[type="submit"]:hover {
+			background-color: #03ad7d;
+		}
+		section#login form button[type="submit"]:focus{
+			outline-style: none;
+			box-shadow: 0 0 .5em #999;
 		}
 
 /*-------------Start Section MediaItem------------------*/
-section#media-item article{
-	max-width: 40em;
+section#media-item {
+	background: hsl(181, 27%, 15%);
+	background-image: 	linear-gradient(45deg, #09BC8A 11px, transparent 75%),
+						linear-gradient(45deg, #508991 23px, transparent 75%);
+	background-size: 41px 100%, 61px 100%;
+	color: #fff;
 }
-	section#media-item article 
+	section#media-item article{
+		padding: 0 1em;
+		margin: 0 auto;		
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		/*background-color: rgba(89, 89, 89, 0.8);*/
+	}
+		section#media-item article h1 {
+			background-color: #508991;
+			margin-bottom: 1em;
+		}
+			section#media-item article h1 a {
+				color: white;
+				text-decoration: none;
+			}
+	section#media-item img {
+		float: none;
+		margin: .5em auto;
+	}
+	section#media-item p {
+		width: 100%;
+		padding-bottom: 2em;
+		margin-bottom: 0;
+	}
+	@media screen and (min-width: 33em){
+		section#media-item article{
+			max-width: 40em;
+			display: block;
+		}
+			section#media-item img {
+				float: left;
+				margin: 0 .8em .8em 0;
+			}
+			section#media-item p {
+				width: auto;
+			}
+	}
