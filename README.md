@@ -1,6 +1,6 @@
 #minor-CSSToTheRescue
 
-Live website assignment week 1 can be found on the following link:
-[CSS To The Rescue - Styleguide](http://shyantavleugel.nl/web-dev/cssttr/styleguide.html)
+Live website assignment can be found on the following link:
+[CSS To The Rescue - Styleguide](http://shyanta.github.io)
 
-This is the styling I've done for so far. I'm going to finish all the components by the end of the weekend.
+The styling I've done for now is the basics. All of the extra's will be added later on.
