@@ -23,24 +23,164 @@ h1,h2 {
 h2 {
 	background-color: #004346;
 }
+main {
+	width: 70%;
+	margin: 0 auto;
+}
+
+/*-------------Start Styling Header------------------*/
+header {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #74B3CE;
+	display: flex;
+}
+	header a[alt="logo"] {
+		line-height: 2;
+		flex-basis: 100%;
+		text-align: center;
+	}
+
+/*-------------Start Styling Navigation------------------*/
+header nav {
+	flex-basis: 100%;
+}
+	header nav label {
+		position: relative;
+		background-color: #172A3A;
+		line-height: 2;
+		width: 100%;
+		font-size: 1.2em;
+	    color: white;
+	    text-align: center;
+	    display: block;
+	}
+		header nav input[type="checkbox"] {
+			display: none;
+		}
+		header nav input[type="checkbox"]:checked ~ ul {
+			display: block;
+		}
+		header nav label::after {
+			content: '';
+			position: absolute;
+			right: calc(50% - 95px);
+			top: 10px;
+			background-image: url('../img/down-arrow.svg');
+			background-size: 1em;
+			width: 1em;
+			height: 1em;
+		}
+	header nav ul {
+		display: none;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		max-width: 100%;
+	}
+		header nav li {
+			max-width: 100%;
+			background-color: #74B3CE;
+		}
+			header nav li a {
+				line-height: 2;
+				display: block;				
+				color: white;
+				text-decoration: none;
+			}
+				header nav li a:focus {
+					outline-color: #fff;
+				}
+			header nav li ul {
+				display: block;
+				padding-left: 2em;
+				background-color: #508991;
+			}
+				header nav li ul li {
+					background-color: #508991;
+				}
+@media screen and (min-width: 40em){
+header {
+	width: 100%;
+	padding: 0 15%;
+	box-sizing: border-box;
+}
+	header a[alt="logo"] {
+		flex-basis: 30%;
+		text-align: left;
+	}
+	header nav {
+		flex-basis: 70%;
+	}
+		header nav label, 
+		header nav input {
+			display: none;
+		}
+		header nav ul {
+			display: block;
+			max-width: 100%;
+			text-align: right;
+			position: relative;
+		}
+			header nav ul li {
+				display: inline-block;
+			}	
+			header nav ul li:hover {
+				background-color: #b0d5e5;
+			}
+				header nav ul li a {				
+					padding: 0 1em;
+				}		
+				header nav li.has-sub{
+					/*position: relative;*/
+				}
+					header nav ul li ul {
+						text-align: center;
+						display: none;
+						z-index: 100; /*Only needed because of the next component*/
+					}
+						header nav li li {
+							padding: 0;
+							display: block;
+						}		
+						header nav li li:hover {
+							background-color: #5cacce;
+						}
+						header nav li li a {
+							padding: 0;
+						}
+				header nav ul li.has-sub:hover ul{
+					display: block;
+					width: 10em;
+					padding: 0;
+					top: 2em;
+					position: absolute;
+				}
+}
 
 /*-------------Start Section Chat------------------*/
 section#chat ol {
 	background-image: url(../img/chat-bg.jpg);
 	background-size: cover;
 	background-position: center;
-	padding: 0 .3em;
+	padding: 0 .8em;
 	margin: 0;
 	list-style: none;
 	display: flex;
 	flex-direction: column;
+	height: 60vh;
+	max-width: 100%;
+	overflow-y: scroll;
 }
-	section#chat ol li{
+	section#chat ol li {
 		width: auto;
 		padding: .4em .6em;
 		border-radius: 10px;
-		margin: 1em 0;
+		margin: .1em 0;
 	}
+		section#chat ol li:first-child {
+			margin: 1em 0;
+		}
 		section#chat ol li:focus {
 			outline-style: none;
 			box-shadow: 0 0 10px #999;
@@ -48,11 +188,35 @@ section#chat ol {
 		section#chat ol li.send{
 			background-color: #74B3CE;
 			align-self: flex-end;
+			position: relative;
 		}
+			section#chat ol li.send:before {
+				content: '';
+				width: 0px;
+				height: 0px;
+				border-style: solid;
+				border-width: 0 0 18px 20px;
+				border-color: transparent transparent transparent #74B3CE;  
+				top: 0;
+				right: -11px;
+				position: absolute;
+			}
 		section#chat ol li.received{				
 			background-color: #508991;
 			align-self: flex-start;
-		}
+			position: relative;
+		}		
+			section#chat ol li.received:before {
+				content: '';
+				width: 0px;
+				height: 0px;
+				border-style: solid;
+				border-width: 0 20px 18px 0;
+				border-color: transparent #508991 transparent transparent;  
+				top: 0;
+				left: -11px;
+				position: absolute;
+			}
 			section#chat ol li p {
 				font-size: 1.3em;
 				margin: 0 0 .3em 0;
@@ -248,6 +412,10 @@ section#media-items {
 			max-width: 40em;
 			/*display: block;*/
 		}
+			section#media-items article h1 {
+				background-color: transparent;
+				flex-basis: 100%;
+			}
 			section#media-items img {
 				flex-basis: 30%;
 				width: 30%;
@@ -264,103 +432,6 @@ section#media-items {
 					flex-basis: 55%;
 				}
 	}
-
-/*-------------Start Section Navigation------------------*/
-header nav {
-	width: 100%;
-}	
-	header nav label {
-		position: relative;
-		background-color: #172A3A;
-		line-height: 2;
-		width: 100%;
-		font-size: 1.2em;
-	    color: white;
-	    text-align: center;
-	    display: block;
-	}
-		header nav input[type="checkbox"] {
-			display: none;
-		}
-		header nav input[type="checkbox"]:checked ~ ul {
-			display: block;
-		}
-		header nav label::after {
-			content: '';
-			position: absolute;
-			right: calc(50% - 95px);
-			top: 10px;
-			background-image: url('../img/down-arrow.svg');
-			background-size: 1em;
-			width: 1em;
-			height: 1em;
-		}
-	header nav ul {
-		display: none;
-		padding: 0;
-		margin: 0;
-		list-style: none;
-		max-width: 100%;
-		background-color: #74B3CE;
-	}
-		header nav li {
-			max-width: 100%;
-			background-color: #74B3CE;
-		}
-			header nav li a {
-				line-height: 2;
-				display: block;				
-				color: white;
-				text-decoration: none;
-			}
-				header nav li a:focus + ul{ /*Hier zoek ik nog een andere manier voor zonder javascript*/
-					display: block;
-				}
-			header nav li ul {
-				display: block;
-				padding-left: 2em;
-				background-color: #508991;
-			}
-				header nav li ul li {
-					background-color: #508991;
-				}
-@media screen and (min-width: 40em){
-	header nav label, 
-	header nav input {
-		display: none;
-	}
-	header nav ul {
-		display: block;
-		width: 100%;
-		padding: 0;
-		text-align: center;
-	}
-		header nav ul li {
-			display: inline-block;
-			padding: 0 1em;
-		}			
-			header nav li:nth-child(2){
-				position: relative;
-			}
-				header nav ul li ul {
-					display: none;
-					z-index: 100; /*Only needed because of the next component*/
-				}
-					header nav li li {
-						padding: 0;
-						display: block;
-					}
-					header nav li li a {
-						padding-left: 0;
-					}
-			header nav ul li:nth-child(2):hover ul{
-				display: block;
-				padding: 0;
-				top: 2.1em;
-				left: 0;
-				position: absolute;
-			}
-}
 
 /*-------------Start Section Picture with a subtitle------------------*/
 section#subtitle article {
