@@ -1,4 +1,4 @@
-#minor-CSSToTheRescue
+# minor-CSSToTheRescue
 
 Live website assignment can be found on the following link:
 [CSS To The Rescue - Styleguide](http://shyanta.github.io)

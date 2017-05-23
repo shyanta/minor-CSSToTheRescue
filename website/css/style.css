@@ -1,16 +1,20 @@
+@font-face {
+	font-family: Ampersand;
+	src: url("../fonts/LibreBaskerville-Italic.ttf");
+	unicode-range: U+26;
+}
+
 /*-------------General Styling------------------*/
 body {
 	margin: 0;
 	padding: 0;
 	font-size: 1em;
-	font-family: sans-serif;
-	background: hsl(181, 27%, 15%);
-	background-image: 	linear-gradient(45deg, #09BC8A 11px, transparent 75%),
-						linear-gradient(45deg, #508991 23px, transparent 75%);
-	background-size: 41px 100%, 61px 100%;
-	background-attachment: fixed;
+	line-height: 1.3;
+	font-family: Ampersand, verdana ,sans-serif;
 	height: 100vh;
 	width: 100%;
+	position: relative;
+	background-color: #e6f5fb;
 }
 h1,h2 {
 	margin: 0;
@@ -18,7 +22,7 @@ h1,h2 {
 	line-height: 2;
 	width: 100%;
 	text-align: center;
-	background-color: #172A3A;
+	background-color: #508991;
 	color: white;
 }
 h2 {
@@ -27,10 +31,27 @@ h2 {
 main {
 	width: 100%;
 	margin: 0 auto;
+	background-color: #fff;
+}
+main + footer {
+	background-color: #172A3A;
+	text-align: center;
+	padding: 15px;
+	width: 100%;
+	box-sizing: border-box;
+	color: #fff;
+}
+
+body.no-container main {
+	background-color: transparent;
 }
 @media screen and (min-width: 40em){
 	main {
 		width: 70%;
+	}
+	body.no-container main {
+		width: 100%;
+		background-color: transparent;
 	}
 }
 :focus {
@@ -98,7 +119,7 @@ header nav {
 		}
 			header nav li a {
 				line-height: 2;
-				display: block;				
+				display: block;
 				color: white;
 				text-decoration: none;
     			padding-left: 1em;
@@ -114,7 +135,11 @@ header nav {
 				header nav li ul li {
 					background-color: #508991;
 				}
-@media screen and (min-width: 40em){
+					header nav li ul li a {
+						line-height: 1;
+						padding: 15px 0;
+					}
+@media screen and (min-width: 43em){
 header {
 	width: 100%;
 	padding: 0 15%;
@@ -128,7 +153,7 @@ header {
 	header nav {
 		flex-basis: 70%;
 	}
-		header nav label, 
+		header nav label,
 		header nav input {
 			display: none;
 		}
@@ -138,16 +163,16 @@ header {
 			text-align: right;
 			position: relative;
 		}
-			header nav ul li a {				
+			header nav ul li a {
 				line-height: 3;
 			}
 			header nav ul li {
 				display: inline-block;
-			}	
+			}
 			header nav ul li:hover {
 				background-color: #b0d5e5;
 			}
-				header nav ul li a {				
+				header nav ul li a {
 					padding: 0 1em;
 				}
 					header nav ul li ul {
@@ -158,7 +183,7 @@ header {
 						header nav li li {
 							padding: 0;
 							display: block;
-						}		
+						}
 						header nav li li:hover {
 							background-color: #5cacce;
 						}
@@ -175,10 +200,10 @@ header {
 
 /*-------------Start Series Overview------------------*/
 section#media-items {
-	color: #fff;
+	color: #000;
 }
 	section#media-items article{
-		margin: 0 auto;		
+		margin: 0 auto;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -214,32 +239,106 @@ section#media-items {
 		padding: 1em 0 1em 1em;
 		margin-bottom: 0;
 	}
-	@media screen and (min-width: 33em){
-		section#media-items article h1 {
-			flex-basis: 100%;
+	@media screen and (min-width: 36em){
+		section#media-items {
+			display: flex;
+			flex-direction: column;
 		}
-		section#media-items img {
-			flex-basis: 30%;
-			width: 30%;
-			height: 100%;
-		}
-			section#media-items article:nth-of-type(1) img{
-				flex-basis: 40%;
-				width: 40%;
+			section#media-items article {
+				flex-basis: 100%;
+				margin: 0;
+				height: auto;
 			}
-		section#media-items p {
-			flex-basis: 65%;
-		}
-			section#media-items article:first-child  p{
-				flex-basis: 55%;
-			}
+				section#media-items article h1 {
+					flex-basis: 100%;
+				}
+				section#media-items img {
+					flex-basis: 40%;
+					width: 40%;
+					height: auto;
+				}
+					section#media-items article:first-child img{
+						flex-basis: 100%;
+						width: 100%;
+					}
+				section#media-items p {
+					flex-basis: 55%;
+					padding: 10px;
+					box-sizing: border-box;
+					height: auto;
+				}
+					section#media-items article:first-child  p{
+						flex-basis: 100%;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						right: 0;
+						text-align: center;
+						background-color: rgba(255,255,255,0.7)
+					}
 	}
 
 /*-------------Start Serie Info Page------------------*/
-section#media-item {
-
+@media screen and (min-width: 40em){
+	main#info {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
 }
-
+section#summary p {
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+	section#summary p:nth-of-type(1){
+		text-align: center;
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+/*-------------Start Section Picture with a subtitle------------------*/
+section#subtitle article {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+	section#subtitle article h1 {
+		order: 2;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: auto;
+		padding: .4em 1em;
+	}
+	section#subtitle article figure {
+		order: 1;
+		margin: 0;
+		font-size: 0;
+	}
+		section#subtitle article figure img {
+			width: 100%;
+			height: auto;
+		}
+	section#subtitle article figcaption {
+		order: 3;
+		padding: .3em 1em;
+		background-color: #09BC8A;
+		color: #fff;
+		font-size: .9em;
+		text-align: center;
+	}
+		section#subtitle article figcaption footer {
+			font-size: .7em;
+		}
+			section#subtitle article figcaption footer a{
+				color: #172A3A;
+				text-decoration: none;
+			}
+@media screen and (min-width: 40em){
+	section#subtitle {
+		flex-basis: 80%;
+		width: 80%;
+	}
+}
 /*-------------Start Section Rating------------------*/
 section#rating fieldset {
 	border: none;
@@ -259,25 +358,155 @@ section#rating fieldset {
 		font-size: .8em;
 	}
 		section#rating label svg {
-			width: 4em;
-			height: 4em;
+			width: 5em;
+			height: 5em;
+			padding: 5px;
 		}
 	section#rating input {
-		visibility: hidden;
+		clip: rect(0,0,0,0);
 		position: absolute;
 	}
 		section#rating input:hover + label,
-		section#rating input:checked + label {
+		section#rating input:checked + label,
+		section#rating input:focus + label {
 			box-shadow: 0 0 20px #999;
 		}
 			section#rating input:hover + label svg,
-			section#rating input:checked + label svg {
+			section#rating input:checked + label svg,
+			section#rating input:focus + label svg {
 				transform: scale(1.3);
 				transition: .3s;
 			}
+@media screen and (min-width: 40em){
+
+	section#rating {
+		flex-basis: 20%;
+		width: 20%;
+		background-color: #508991;
+		padding-top: 2em;
+	}
+	section#rating fieldset {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		box-sizing: border-box;
+		vertical-align: middle;
+		width: 80%;
+		margin: 0 auto;
+	}
+		section#rating label {
+			float: none;
+			flex-basis: 100%;
+			width: 100%;
+			padding: .5em 0;
+			color: #fff;
+		}
+		section#rating label svg {
+			width: 5em;
+			height: 5em;
+			padding: 5px;
+			box-sizing: border-box;
+		}
+
+			section#rating input:hover + label,
+			section#rating input:checked + label,
+			section#rating input:focus + label {
+				box-shadow: 0 0 20px #fff;
+				background-color: #92c4cb;
+				color: #111;
+			}
+}
+@media screen and (min-width: 45em){
+	section#rating fieldset {
+		width: 60%;
+	}
+	section#rating label svg {
+		width: 5em;
+		height: 5em;
+		padding: 10px;
+	}
+}
+@media screen and (min-width: 52em){
+	section#rating fieldset {
+		width: 50%;
+	}
+	section#rating label svg {
+		width: 5em;
+		height: 5em;
+		padding: 10px;
+	}
+}
+@media screen and (min-width: 60em){
+	section#rating fieldset {
+		width: 45%;
+	}
+	section#rating label svg {
+		width: 6em;
+		height: 6em;
+		padding: 10px;
+	}
+}
 /*-------------Start Progress Bar------------------*/
-
-
+section#step-indicator {
+	padding-bottom: 30px;
+}
+	section#step-indicator progress {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 100%;
+		height: 30px;
+		margin-top: 10px;
+	}
+		section#step-indicator progress[value]::-webkit-progress-bar {
+			background-color: #eee;
+			border-radius: 2px;
+	 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+		}
+		section#step-indicator progress[value]::-webkit-progress-value {
+			background-image:
+				-webkit-linear-gradient(-45deg,
+					transparent 33%, rgba(23, 42, 58, .1) 33%,
+					rgba(9, 188, 138, .1) 66%, transparent 66%),
+				-webkit-linear-gradient(top,
+					rgba(255, 255, 255, .25),
+					rgba(0, 0, 0, .25)),
+				-webkit-linear-gradient(left, #172a3a, #09BC8A);
+			border-radius: 2px;
+			background-size: 35px 20px, 100% 100%, 100% 100%;
+			}
+	section#step-indicator ol {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+		section#step-indicator ol li {
+			display: inline-block;
+			margin-left: 5.5%;
+		}
+	@media screen and (min-width: 20em){
+		section#step-indicator ol li {
+			display: inline-block;
+			margin-left: 6%;
+		}
+	}
+	@media screen and (min-width: 30em){
+		section#step-indicator {
+			flex-basis: 100%;
+		}
+			section#step-indicator ol li {
+				display: inline-block;
+				margin-left: 7.2%;
+			}
+	}
+	@media screen and (min-width: 60em){
+		section#step-indicator {
+			flex-basis: 100%;
+		}
+			section#step-indicator ol li {
+				display: inline-block;
+				margin-left: 8%;
+			}
+	}
 /*-------------Start Section Login------------------*/
 section#login {
 	display: flex;
@@ -286,7 +515,8 @@ section#login {
 	margin: auto;
 }
 section#login form{
-	background-color: #dae1e5;
+	background-color: #fff;
+	box-shadow: 0 0 10px #999;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -323,6 +553,14 @@ section#login form{
 			outline-style: none;
 			background-color: #eafcf2;
 		}
+		section#login form input:invalid {
+			outline-style: none;
+			background-color: #ffccd1;
+		}
+			section#login form input:invalid:focus{
+				outline-style: none;
+	    		box-shadow: 0 0 .5em #ff0000;
+			}
 		section#login form input[type="checkbox"]{
 			position: absolute;
 			clip: rect(0,0,0,0);
@@ -365,12 +603,12 @@ section#login form{
 		text-decoration: none;
 	}
 		section#login form a:hover {
-			color: #09BC8A;	
+			color: #09BC8A;
 		}
 		section#login form a:focus {
 			outline-style: none;
 			box-shadow: 0 0 .5em #09BC8A;
-			border-radius: 5px;			
+			border-radius: 5px;
 		}
 	section#login form button[type="submit"] {
 		width: 100%;
@@ -386,20 +624,22 @@ section#login form{
 		}
 		section#login form button[type="submit"]:focus{
 			outline-style: none;
-			box-shadow: 0 0 .5em #999;
+			box-shadow: 0 0 .5em #333;
 		}
 
 /*-------------Start Section Chat------------------*/
 section#chat ol {
-	background-image: url(../img/chat-bg.jpg);
-	background-size: cover;
-	background-position: center;
+	background: hsl(181, 27%, 15%);
+	background-image: 	linear-gradient(45deg, #09BC8A 11px, transparent 75%),
+						linear-gradient(45deg, #508991 23px, transparent 75%);
+	background-size: 41px 100%, 61px 100%;
+	background-attachment: fixed;
 	padding: 0 .8em;
 	margin: 0;
 	list-style: none;
 	display: flex;
 	flex-direction: column;
-	height: 60vh;
+	height: calc(100vh - 10.8em);
 	max-width: 100%;
 	overflow-y: scroll;
 }
@@ -430,23 +670,23 @@ section#chat ol {
 				height: 0px;
 				border-style: solid;
 				border-width: 0 0 18px 20px;
-				border-color: transparent transparent transparent #74B3CE;  
+				border-color: transparent transparent transparent #74B3CE;
 				top: 0;
 				right: -11px;
 				position: absolute;
 			}
-		section#chat ol li.received{				
+		section#chat ol li.received{
 			background-color: #508991;
 			align-self: flex-start;
 			position: relative;
-		}		
+		}
 			section#chat ol li.received:before {
 				content: '';
 				width: 0px;
 				height: 0px;
 				border-style: solid;
 				border-width: 0 20px 18px 0;
-				border-color: transparent #508991 transparent transparent;  
+				border-color: transparent #508991 transparent transparent;
 				top: 0;
 				left: -11px;
 				position: absolute;
@@ -476,7 +716,7 @@ section#chat form {
 	}
 	section#chat form textarea {
 		flex-grow: 5;
-		border: 0;
+		border-color: lightgrey;
 		outline-color: #09BC8A;
 		transition: .3s;
 	}
@@ -487,45 +727,34 @@ section#chat form {
 		font-size: 1.2em;
 		border: 0;
 	}
+	@media screen and (min-width: 33em){
+		section#chat ol {
+			height: calc(100vh - 8.5em);
+		}
+	}
 
-/*-------------Start Section Picture with a subtitle------------------*/
-section#subtitle article {
-
-	max-width: 40em;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	position: relative;
+/*LOADER*/
+.loader-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(255,255,255, 0.5);
 }
-	section#subtitle article h1 {
-		order: 2;
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: auto;
-		padding: .4em 1em;
-	}
-	section#subtitle article figure {
-		order: 1;
-		margin: 0;
-		font-size: 0;
-	}
-		section#subtitle article figure img {
-			max-width: 100%;
-			height: auto;
-		}
-	section#subtitle article figcaption {
-		order: 3;
-		padding: .3em 1em;
-		background-color: #09BC8A;
-		color: #fff;
-		font-size: .9em;
-		text-align: right;
-	}
-		section#subtitle article figcaption footer {
-			font-size: .7em;
-		}
-			section#subtitle article figcaption footer a{
-				color: #172A3A;
-				text-decoration: none;
-			}
+.loader {
+	border: 8px solid #172A3A;
+	border-top: 8px solid #09BC8A;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	animation: spin .8s linear infinite;
+	position: absolute;
+	top: calc(50% - 30px);
+	left: calc(50% - 30px);
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
